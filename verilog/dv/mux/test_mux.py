@@ -76,14 +76,25 @@ async def test_rom(dut):
     dut.reset_n.value = 0
     await enable_design(dut, 0)
 
-    dut._log.info("test ROM")
-    buf = bytearray(256)
-    for byte_idx in range(len(buf)):
+    await ClockCycles(dut.clk, 1)
+    dut.reset_n.value = 1
+    await ClockCycles(dut.clk, 1)
+
+    dut._log.info("Read ROM, addressing with ui_in (rst_n=1)")
+    rom_data = bytearray(256)
+    for byte_idx in range(len(rom_data)):
         dut.ui_in.value = byte_idx
         await ClockCycles(dut.clk, 1)
-        buf[byte_idx] = dut.uo_out.value
+        rom_data[byte_idx] = dut.uo_out.value
 
-    text = buf[32:128].rstrip(b"\0").decode("ascii")
+    dut._log.info(f"Read ROM, addressing sequentially (rst_n=0)")
+    dut.reset_n.value = 0
+    rom_data_seq = bytearray(256)
+    for byte_idx in range(len(rom_data_seq)):
+        await ClockCycles(dut.clk, 1)
+        rom_data_seq[byte_idx] = dut.uo_out.value
+
+    text = rom_data[32:128].rstrip(b"\0").decode("ascii")
     items = {}
     for line in text.split("\n"):
         if len(line) == 0:
@@ -91,18 +102,21 @@ async def test_rom(dut):
         key, value = line.split("=", 2)
         items[key] = value
 
-    dut._log.info(f"ROM start bytes: {binascii.hexlify(buf[:32], ' ').decode('ascii')}")
+    dut._log.info(f"ROM start bytes: {binascii.hexlify(rom_data[:32], ' ').decode('ascii')}")
     dut._log.info(f"ROM text data: {items}")
+
 
     assert "shuttle" in items
     assert "repo" in items
     assert "commit" in items
 
+    assert rom_data == rom_data_seq, "ROM contents differ when addressing sequentially"
+
     assert items["repo"] == os.environ.get("EXPECTED_REPO")
     assert re.match("^[0-9a-f]{8}$", items["commit"]) != None
 
-    magic = buf[248:252]
+    magic = rom_data[248:252]
     assert magic == b"TT\xFA\xBB"
 
-    crc32 = int.from_bytes(buf[252:256], "little")
-    assert crc32 == binascii.crc32(buf[0:252])
+    crc32 = int.from_bytes(rom_data[252:256], "little")
+    assert crc32 == binascii.crc32(rom_data[0:252])
