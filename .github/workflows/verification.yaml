@@ -47,7 +47,7 @@ jobs:
         run: python ./tt/configure.py --update-shuttle --test
 
       # run first set of tests
-      - name: Mux simulation (without caravel)
+      - name: Mux simulation
         working-directory: verilog/dv/mux
         env:
           EXPECTED_REPO: ${{ github.repository }}
