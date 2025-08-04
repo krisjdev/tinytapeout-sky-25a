@@ -25,6 +25,7 @@ module tt_um_acidonitroso_programmable_threshold_voltage_sensor (
  wire [7:0] int_y;
  wire [7:0] int_n;
 
+/*
 decoder_p decoder_p(
 		    .in[0](ui_in[0]),
 		    .in[1](ui_in[1]),
@@ -59,6 +60,7 @@ analog analog(
 	      .Vss(VGND)
 
 );
+*/
 
 assign uo_out[0] = VGND;
 assign uo_out[1] = VGND;
