@@ -18,6 +18,6 @@ modules:
 # 4-Tile High modules require manual placement until they are fully supported by the multiplexer:
   - name: tt_tinyQV
     height: 4
-    width: 3
-    x: 10
+    width: 5
+    x: 12
     y: 23
