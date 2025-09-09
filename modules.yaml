@@ -20,6 +20,11 @@ modules:
     width: 1
     x: 5
     y: 14
+  - name: rebeccargb_tt09ball_gdsart
+    height: 1
+    width: 1
+    x: 3
+    y: 14
 # 4-Tile High modules require manual placement until they are fully supported by the multiplexer:
   - name: tt_tinyQV
     height: 4
