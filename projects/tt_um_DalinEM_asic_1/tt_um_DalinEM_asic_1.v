@@ -27,7 +27,7 @@ VCR subckt1(.vcc(VAPWR),.vss(VGND),.out(ua[0]),.vsen(ua[1]),.Vled(ua[2]));
      BIAS_1 subckt_4(.vcc(VAPWR),.vss(VGND));
      delay_1 subckt_5(.vcc(VAPWR),.vss(VGND));
      Timming subckt_6(.vcc(VAPWR),.vss(VGND));
-     MUX_1 subckt_7(.VDD(VAPWR),.VSS(VGND),.S0(ua[4]),.S1(ua[3]);
+     MUX_1 subckt_7(.VDD(VAPWR),.VSS(VGND),.S0(ua[4]),.S1(ua[3]));
 
 assign uo_out[0] = VGND;
     assign uo_out[1] = VGND;
