@@ -23,8 +23,8 @@ module tt_um_3v_inverter_SiliconeGuide (
 	double_inverter double_inverter(
 		.VDD(VAPWR),
 		.VSS(VGND),
-		.input(ua[1]),
-		.output(ua[0])
+		._input(ua[1]),
+		._output(ua[0])
 	);
 
     // ties for the output enables
