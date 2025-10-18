@@ -31,7 +31,7 @@ The peripheral's architecture is a 4-stage pipeline designed for stable, high-sp
 
 ### Block Diagram
 
-![](https://files.manuscdn.com/user_upload_by_module/markdown/310419663031347111/zXbeUKkcmInOrsEt.png)
+![](images/1.png)
 
 ## Pinout
 
