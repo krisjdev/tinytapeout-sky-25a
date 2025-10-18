@@ -12,13 +12,3 @@ datasheet_config:
 
   include:
     - docs/chip_map.typ
-
-  disabled:
-    - tt_um_tgrillz_sixSidedDie
-    - tt_um_betz_morse_keyer
-    - tt_um_bitty
-    - tt_um_BryanKuang_mac_peripheral
-    - tt_um_toivoh_pwl_synth
-    - tt_um_Enhanced_pll
-    - tt_um_tiny_pll
-    - tt_um_virantha_enigma
