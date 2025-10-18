@@ -65,48 +65,48 @@ Features:
 
 (See https://github.com/toivoh/ttsky25a-pwl-synth/blob/main/docs/info.md#toc for a version with clickable links.)
 
-- [Overview](#overview)
-- [Table of contents](#toc)
-- [Register map](#regmap)
-	- [Mode register fields](#mode_fields)
-	- [Sweep register fields](#sweep_fields)
-	- [Config register fields](#cfg_fields)
-	- [Register differences between channels](#channel_differences)
-- [IO pins](#io_pins)
-- [Basic synth functions](#basic_functions)
-	- [Setting the note frequency](#note_freq)
-	- [Waveform shaping](#wf_shaping)
-	- [Detuning](#detuning)
-	- [Noise](#noise)
-	- [Sweeping parameter values](#sweeping)
-- [Additional synth functions](#additional_functions)
-	- [Stereo mode](#stereo_mode)
-	- [Frequency multipliers](#freq_mults)
-	- [Common saturation](#common_sat)
-	- [4 bit mode](#4bit_mode)
-	- [Orion Wave](#orion_wave)
-	- [Sample playback](#sample_output)
-	- [Oscillator sync](#osc_sync)
-	- [PWL oscillator](#pwl_osc)
-- [Additional considerations](#additional_considerations)
-	- [Avoiding audible clicks](#click_avoidance)
-	- [Implementing envelopes](#envelopes)
-	- [Low frequency notes](#low_freq_notes)
-	- [The `counter` and `dcounter` registers](#oct_counter)
-- [How it works](#how_it_works)
-	- [ALU](#alu)
-	- [Program](#program)
-	- [Register file using latches](#regfile)
-	- [Oscillators](#oscillators)
-	- [Sigma-delta conversion](#sigma_delta)
-	- [PWM output](#pwm_output)
-	- [Stereo output](#stereo_output)
-	- [Avoiding race conditions between internal and external register writes](#write_collision)
-	- [*Linear noise interpolation (deluxe version)*](#lin_noise)
-	- [Space saving hacks that depend on peripheral interface specifics](#space_hacks)
-- [Tests used in development](#dev_tests)
-- [How to test](#how_to_test)
-- [External hardware](#ext_hw)
+- [Overview]()
+- [Table of contents]()
+- [Register map]()
+	- [Mode register fields]()
+	- [Sweep register fields]()
+	- [Config register fields]()
+	- [Register differences between channels]()
+- [IO pins]()
+- [Basic synth functions]()
+	- [Setting the note frequency]()
+	- [Waveform shaping]()
+	- [Detuning]()
+	- [Noise]()
+	- [Sweeping parameter values]()
+- [Additional synth functions]()
+	- [Stereo mode]()
+	- [Frequency multipliers]()
+	- [Common saturation]()
+	- [4 bit mode]()
+	- [Orion Wave]()
+	- [Sample playback]()
+	- [Oscillator sync]()
+	- [PWL oscillator]()
+- [Additional considerations]()
+	- [Avoiding audible clicks]()
+	- [Implementing envelopes]()
+	- [Low frequency notes]()
+	- [The `counter` and `dcounter` registers]()
+- [How it works]()
+	- [ALU]()
+	- [Program]()
+	- [Register file using latches]()
+	- [Oscillators]()
+	- [Sigma-delta conversion]()
+	- [PWM output]()
+	- [Stereo output]()
+	- [Avoiding race conditions between internal and external register writes]()
+	- [*Linear noise interpolation (deluxe version)*]()
+	- [Space saving hacks that depend on peripheral interface specifics]()
+- [Tests used in development]()
+- [How to test]()
+- [External hardware]()
 
 <a name="regmap"></a>
 ## Register map
@@ -173,10 +173,9 @@ The synth operates in a loop, computing a new sample every clock 64 cycles. Read
 ### Mode register fields
 The layouts of the mode registers is
 
-| 11             | 10:9       | 8     | 7            | 6:4                 | 3     |        2:0   |
-|----------------|------------|-------|--------------|---------------------|-------|--------------|
-| `detune_frac`  | `osc_sync` | `wf1` | `common_sat` | `freq_mults`        | `wf0` | `detune_exp` |
-|                |            |       |              | / `stereo_pos`      |       |              |
+| 11             | 10:9       | 8     | 7            | 6:4                         | 3     |        2:0   |
+|----------------|------------|-------|--------------|-----------------------------|-------|--------------|
+| `detune_frac`  | `osc_sync` | `wf1` | `common_sat` | `freq_mults` / `stereo_pos` | `wf0` | `detune_exp` |
 
 *The deluxe version has some additional mode register bits:*
 
@@ -490,7 +489,7 @@ The beat frequency is also proportional to the sampling frequency `fs`, and thus
 ### Noise
 
 A Linear Feedback Shift Register (LFSR) can be used to replace a channel's oscillator output with noise.
-Some channels use an 18-bit LFSR and some use an 11 bit (see [Register differences between channels](#channel_differences)).
+Some channels use an 18-bit LFSR and some use an 11 bit (see [Register differences between channels]()).
 
 In the default noise mode, bottom 11 bits of the LFSR are used as the oscillator output. This results in a certain amount of filtering since the LFSR state is shifted left one step at each output, so consecutive outputs have some correlation. The noise output is held constant within each noise sample.
 
@@ -542,7 +541,7 @@ The rising and falling slope values `slope_r` and `slope_f` share a common sweep
 
 <a name="additional_functions"></a>
 ## Additional synth functions
-These functions alter the waveform calculations in the synth in various ways relative to the voice architecture diagram in the [waveform shaping](#wf_shaping) section.
+These functions alter the waveform calculations in the synth in various ways relative to the voice architecture diagram in the [waveform shaping]() section.
 
 <a name="stereo_mode"></a>
 ### Stereo mode
@@ -701,7 +700,7 @@ Both produce a sawtooth-wave-like phase output with a period controlled by `f_pe
 - The linear phase oscillator tries to output a sawtooth wave with constant slope, but except for a few note frequencies, it will have to alernate between steps of two different sizes to reach a total phase increase of 4096 over one period.
 - The PWL oscillator instead begins each half period with a lower slope of `2^n` phase steps/sample (for some integer `n`), switching to twice the slope at the point needed to produce the desired period.
 
-The main motivation for the PWL oscillator is that it can be used to more or less eliminate quantization artifacts caused by the limited 10 bit PWM output resolution. This is explored more in the [Low frequency notes](#low_freq_notes) section.
+The main motivation for the PWL oscillator is that it can be used to more or less eliminate quantization artifacts caused by the limited 10 bit PWM output resolution. This is explored more in the [Low frequency notes]() section.
 
 One effect of switching to the PWL oscillator is that it changes (usually brightens) the tone color, more for some periods than others. Periods that are powers of 2 are not affected, while periods that are right in between two powers of 2 are affected the most. If the change in brightness is not desired, it should be possible to counteract it to a certain extent by increasing the slope more for the frequencies that are brightened less.
 
