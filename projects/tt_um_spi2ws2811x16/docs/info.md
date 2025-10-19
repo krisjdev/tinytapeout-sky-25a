@@ -30,4 +30,4 @@ Just add more R[0..7]G[0..7]B[0..7] data before the null bytes to drive more tha
 
 ## External hardware
 
-IceStick for testing and chceking if the output is fine.
+IceStick for testing and checking if the output is fine.
