@@ -7,7 +7,7 @@ You can also include images in this folder and reference them in the markdown. E
 512 kb in size, and the combined size of all images must be less than 1 MB.
 -->
 
-# How it works
+## How it works
 
 This is the Tiny Tapeout collaborative competition Risc-V SoC.
 
@@ -23,7 +23,7 @@ Code can only be executed from flash.  Data can be read from flash and RAM, and 
 
 The peripherals making up the SoC are contributed by the Tiny Tapeout community, with prizes going to the best designs!
 
-## Address map
+### Address map
 
 | Address range | Device |
 | ------------- | ------ |
@@ -38,7 +38,7 @@ The peripherals making up the SoC are contributed by the Tiny Tapeout community,
 | 0x8000600 - 0x80007FF | User peripherals 16-23 |
 | 0xFFFFF00 - 0xFFFFF07 | TIME |
 
-### DEBUG
+#### DEBUG
 
 | Register | Address | Description |
 | -------- | ------- | ----------- |
@@ -49,7 +49,7 @@ The peripherals making up the SoC are contributed by the Tiny Tapeout community,
 
 See also [debug docs](debug.md)
 
-### TIME
+#### TIME
 
 | Register | Address | Description |
 | -------- | ------- | ----------- |
@@ -61,7 +61,7 @@ This is a simple timer which follows the spirit of the Risc-V timer but using a 
 In this version the MTIME register is updated at 1/64th of the clock frequency (nominally 1MHz), and MTIMECMP is used to trigger an interrupt.
 If MTIME is after MTIMECMP (by less than 2^30 microseconds to deal with wrap), the timer interrupt is asserted.
 
-### GPIO
+#### GPIO
 
 | Register | Address | Description |
 | -------- | ------- | ----------- |
@@ -91,7 +91,7 @@ If MTIME is after MTIMECMP (by less than 2^30 microseconds to deal with wrap), t
 | 14                    | 33 PWL Synth out 6 |
 | 15                    | 15 Tiny Tone out 7 |
 
-### UART
+#### UART
 
 | Register | Address | Description |
 | -------- | ------- | ----------- |
@@ -101,7 +101,7 @@ If MTIME is after MTIMECMP (by less than 2^30 microseconds to deal with wrap), t
 | DIVIDER | 0x8000088 (R/W) | 13 bit clock divider to set the UART baud rate |
 | RX_SELECT | 0x800008C (R/W) | 1 bit select UART RX pin: `ui_in[7]` when low (default), `ui_in[3]` when high |
 
-## Contributed Peripherals
+### Contributed Peripherals
 
 | # | Name | Author(s) | Type | File |
 |---:|---|---|---|---|
@@ -140,7 +140,7 @@ If MTIME is after MTIMECMP (by less than 2^30 microseconds to deal with wrap), t
 | 37 | INTERCAL ALU | Rebecca G. Bettencourt | Full | [37_intercal_alu.md](https://github.com/TinyTapeout/ttsky25a-tinyQV/blob/main/docs/user_peripherals/37_intercal_alu.md) |
 | 39 | Affinex - Affine Transformation Accelerator | Adam Gebregziaber | Full | [39_affinex.md](https://github.com/TinyTapeout/ttsky25a-tinyQV/blob/main/docs/user_peripherals/39_affinex.md) |
 
-# How to test
+## How to test
 
 Load an image into flash and then select the design.
 
@@ -161,7 +161,7 @@ The above should all be handled by some MicroPython scripts for the RP2040 on th
 
 Build programs using the [customised toolchain](https://github.com/MichaelBell/riscv-gnu-toolchain) and the [tinyQV-sdk](https://github.com/MichaelBell/tinyQV-sdk), some examples are [here](https://github.com/MichaelBell/tinyQV-projects).
 
-# External hardware
+## External hardware
 
 The design is intended to be used with this [QSPI PMOD](https://github.com/mole99/qspi-pmod) on the bidirectional PMOD.  This has a 16MB flash and 2 8MB RAMs.
 
