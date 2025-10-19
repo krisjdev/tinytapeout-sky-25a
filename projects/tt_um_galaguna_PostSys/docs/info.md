@@ -1,5 +1,3 @@
-# tt_um_galaguna_PostSys: A Post's Machine CPU Based
-
 ## How it works
 
 A small architecture for practical implementation of a central processing unit (CPU) is proposed based on an improved Post's Machine. The Post's Machine is like Turing's machine but with minor complexity because of a shortest instruction set. The proposed Post’s Machine project has potential as teaching resource, to experiment and verify the fundamental concepts of a simple computer architecture with its instruction set (in this case, only eight instructions). 
