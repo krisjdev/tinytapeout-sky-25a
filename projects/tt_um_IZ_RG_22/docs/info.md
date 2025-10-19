@@ -1,10 +1,6 @@
-# Izhikevich Neuron Model equations implemented in 22-Bit on Verilog
-
 The project implements neuron behaviors based on the Izhikevich equation. The internal operations work on a 22-bit Q3.18 fixed format. To achieve accurate neuron behavior, the original equations have been modified as shown below.
 
 ---
-
-
 
 ## How it works
 
