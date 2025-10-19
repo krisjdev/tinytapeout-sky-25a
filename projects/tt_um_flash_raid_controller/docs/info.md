@@ -1,5 +1,3 @@
-# Flash RAID Controller
-
 A dual SPI flash controller ASIC that acts between hosts and flash memory chips, providing address-based routing and runtime configuration for flash redundancy and load balancing.
 
 ## How it works
