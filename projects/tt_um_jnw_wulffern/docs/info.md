@@ -20,7 +20,6 @@ A detailed description by the students can be seen in chapters below.
 - GR06: Set ui_in[0] high. When you set ui_in[0] low there will be a single pulse on uo_out[2] with a duration 
 that is inversly proportional to temperature.
 
-## External hardware
 
 ## JNW\_GR06\_SKY130A
 
@@ -219,14 +218,3 @@ The layout of the PWM circuit can be found in "**design/JNW_GR07_SKY130A/JNW_GR0
 and is depicted below 
 
 ![layout](images/LayoutDescription3.png)
-
-
-
-
-
-
-
-
-
-
-
