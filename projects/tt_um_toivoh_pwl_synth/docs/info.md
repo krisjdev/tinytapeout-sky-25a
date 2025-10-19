@@ -10,12 +10,7 @@ also need to set this value as the PERIPHERAL_NUM in your test script.
 You can also include images in this folder and reference them in the markdown. Each image must be less than
 512 kb in size, and the combined size of all images must be less than 1 MB.
 -->
-
-# PiecewiseOrionSynth
-
 ![PiecewiseOrionSynth voice architecture](PWOrionSynth-voice-deluxe.png)
-
-Author: Toivo Henningsson
 
 Peripheral index: 33
 
