@@ -117,7 +117,6 @@ Use the following `$monitor` statement in the testbench:
 
 ```verilog
 initial begin
-  $monitor("Time=%0t | start=%b enable=%b data_in=%b | pulse_out=%b done=%b",
-           $time, ui_in[0], ui_in[1], ui_in[5:2], pulse_out, done);
+  $monitor("Time=%0t | start=%b enable=%b data_in=%b | pulse_out=%b done=%b", $time, ui_in[0], ui_in[1], ui_in[5:2], pulse_out, done);
 end
-
+```
