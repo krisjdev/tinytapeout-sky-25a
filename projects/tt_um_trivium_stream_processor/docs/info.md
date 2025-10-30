@@ -3,6 +3,7 @@
 We gratefully acknowledge the Center of Excellence (CoE) in Integrated Circuits and Systems (ICAS) and the Department of Electronics and Communication Engineering (ECE) for providing the necessary resources and guidance. Special thanks to Dr. K R Usha Rani (Associate Dean - PG), Dr. H V Ravish Aradhya (HOD-ECE), Dr. K. S. Geetha (Vice Principal) and Dr. K. N. Subramanya (Principal) for their constant encouragement and support to carry out this Tiny Tapeout SKY25a submission.
 
 ---
+
 ## How it works
 
 This design implements *Trivium-lite*, a minimalistic variant of the Trivium stream coder using three 64-bit shift registers (`s1`, `s2`, `s3`) as internal state. The coder produces a keystream by iteratively updating these registers with a custom linear feedback shift register (LFSR) logic and XORing the output with the plaintext.
