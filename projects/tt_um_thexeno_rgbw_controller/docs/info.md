@@ -10,7 +10,7 @@ You can also include images in this folder and reference them in the markdown. E
 ## How it works
 Color generator for RGBW LEDs, with generation of hue, tint and intensity based on a color index. Is also a direct SPI to 4 PWM channels converter, making it flexible to any different kind of use. The system block diagram is as follow:
 
-![block diagram image](./block_diagram.PNG "RGBW controller block diagram")
+![RGBW controller block diagram](./block_diagram.PNG)
 
 It is an SPI slave in Mode 0, with SPI protocol consisting of 8 byte long command, discriminated with a preamble sequence (see Protocol and Test for the description).
 
@@ -42,7 +42,7 @@ Therefore any SPI transaction can take place after at least 128 clock cycles aft
 
 The logic datapath of the CwPU is shown below:
 
-![SCwPU datapath](./cwpu_datapath.PNG "cwpu_datapath")
+![SCwPU datapath](./cwpu_datapath.PNG)
 
 The CwPU has all the data width of 8 bit, and the energy intensive color discrimination path is active when non in bypass mode only. When active will take the index. Starting from zero, increments the hue progression and compares against this index (i.e. rotates the color wheel) to process at run time with no LUT, the corresponding requested hue. During the rotation, the RGB internal values will also change, increasing and decreasing the hue components to sweep all the combinations to match the requested one. The final value will be used for the next step, which is the tint.
 
@@ -58,11 +58,11 @@ When in bypass mode, the CwPU will only replicate the same RGBW info in input to
 
 SPI is Mode 0 as shown in this timing diagram, highlighting the preable and first byte transfer:
 
-![SPI transaction image, bit detail](./bit_transaction.png "SPI transaction, bit detail")
+![SPI transaction image, bit detail](./bit_transaction.png)
 
 While a whole packet must be compliant with the following diagram:
 
-![SPI transaction image, whole packet structure](./full_transaction.png "SPI transaction, packet structure")
+![SPI transaction image, whole packet structure](./full_transaction.png)
 
 Which contains: 
 
