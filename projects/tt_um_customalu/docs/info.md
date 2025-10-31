@@ -65,6 +65,7 @@ The `tt_um_customalu` is a 4-bit custom Arithmetic Logic Unit (ALU) with two ope
 Inputs are sampled synchronously on the rising clock edge. Operations are executed based on the selected `Opcode` and `Mode`.
 
 ---
+
 On every rising edge of `clk`:
 
 - **A** = `ui_in[3:0]` (Operand A)
