@@ -24,7 +24,7 @@ Overall though, our intention is for our 6502 to remain relatively authentic.
 ## How it works
 This project implements a custom 8-bit microprocessor inspired by the 6502 architecture. The design is built around a central Arithmetic Logic Unit (ALU), a collection of registers, and a microcoded instruction decoder that executes a subset of the 6502 instruction set.
 
-![block diagram](6502BlockDiagram.png)
+![6502 block diagram](6502BlockDiagram.png)
 
 ### Core Architecture
 
@@ -58,7 +58,7 @@ The processor operates on a classic **Fetch-Decode-Execute** cycle controlled by
 
 ## IO Pattern/Clock pattern
 
-![clock diagram](clock_diagram.png)
+![Clock diagram](clock_diagram.png){width=80%}
 
 A unique characteristic of this design is its clocking scheme. The internal CPU logic runs at **half the frequency of the external `clk` input**.
 
@@ -181,6 +181,7 @@ This mode provides faster memory access by using a single byte to specify an add
     *   **Cycle 5 (Transfer to Buffer):** The output value from the ALU is loaded into the `Data Bus Buffer` 
     *   **Cycle 6 (Writeback to Memory):** The HB of the address (`$00`) is placed on the address bus, and the `Data Bus Buffer` content is written to the IO Bus.
     *   **Cycle 7 (Write Address LB to address bus):** The LB of the address (`$44`) is placed on the address bus, and the IO Bus content is written to memory(this step is mostly off chip)
+
 ---
 
 ### 6. Absolute Addressing
