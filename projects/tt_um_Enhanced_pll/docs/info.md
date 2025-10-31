@@ -1,4 +1,4 @@
-tt_um_Enhanced_pll<!-- <a name="toc"></a> -->
+<!-- <a name="toc"></a> -->
 ## Table of contents
 
 [Circuit design]()
@@ -78,6 +78,7 @@ synthesis and PnR was done using a custom OpenROAD flow; and `magic` and
 <!-- [Return to top](#toc) -->
 
 The top-level schematic of `tiny_pll` is shown below:
+
 ![PLL schematic](images/pll_sch.png)
 
 The PLL uses a standard fractional-N architecture, where an input and output
