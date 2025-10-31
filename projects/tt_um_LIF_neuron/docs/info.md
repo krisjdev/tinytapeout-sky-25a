@@ -15,10 +15,9 @@ This AFM-based LIF neuron model implementation features:
 - 8 neurons in one structure
 
 The equition of AFM based LIF neuron model is:
-$$ 
-V[t+1] = AFM\!\left(e^{-\frac{1}{\tau}}, V[t]-E_{rest}\right) + E_{rest} + I \\
-\text{if } V[t] \leq V_{th}, \text{ then } V[t+1] = E_{rest}
-$$
+
+$$V[t+1] = AFM\!\left(e^{-\frac{1}{\tau}}, v[t]-E_{rest}\right) + E_{rest} + I$$
+$$\text{if } V[t] \leq V_{th}, \text{ then } V[t+1] = E_{rest}$$
 
 The execution of this architecture consists of three phases:
 1. Parameter initialization  
