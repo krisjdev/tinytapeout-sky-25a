@@ -13,7 +13,7 @@ This design will take as input a Byte from a UART  receive (RX) line and produce
 The Chirp is available as 8-bit digital bus (7 is MSB, 0 is LSB).
 The produced chirp will be the digital rapresentation of the input Byte in LoRa - Style modulation at BW 125 kHz, SF8.
 
-![](additional/Megnevezetlen_diagram.png)
+![System diagram](additional/Megnevezetlen_diagram.png)
 
 ## How to test
 1. Connect all Hardware.
